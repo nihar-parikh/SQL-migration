@@ -1,5 +1,6 @@
 "use strict";
 const { Model } = require("sequelize");
+const Sequelize = require("sequelize");
 
 module.exports = (sequelize, DataTypes) => {
   class Image extends Model {
@@ -26,6 +27,12 @@ module.exports = (sequelize, DataTypes) => {
 
   Image.init(
     {
+      id: {
+        type: Sequelize.UUID,
+        defaultValue: Sequelize.UUIDV4,
+        primaryKey: true,
+        unique: true,
+      },
       title: DataTypes.STRING,
       url: DataTypes.STRING,
     },

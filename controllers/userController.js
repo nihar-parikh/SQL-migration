@@ -3,16 +3,15 @@ const sequelize = db.sequelize;
 const User = db.user;
 
 const addUser = async (req, res) => {
-  const { id, firstName, lastName, email } = req.body;
+  const { firstName, lastName, email } = req.body;
 
   try {
     const createdUser = await sequelize.transaction(async (t) => {
       const [newUser] = await User.findOrCreate({
         where: { email },
-        defaults: { id, firstName, lastName, email },
+        defaults: { firstName, lastName, email },
         transaction: t,
       });
-
       return newUser;
     });
     res
