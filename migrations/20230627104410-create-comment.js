@@ -1,21 +1,62 @@
+// "use strict";
+// /** @type {import('sequelize-cli').Migration} */
+// module.exports = {
+//   async up(queryInterface, Sequelize) {
+//     await queryInterface.createTable("Comments", {
+//       id: {
+//         type: Sequelize.UUID,
+//         defaultValue: Sequelize.UUIDV4,
+//         primaryKey: true,
+//         unique: true,
+//       },
+//       title: {
+//         type: Sequelize.STRING,
+//       },
+//       commentableId: {
+//         field: "commentableId",
+//         type: Sequelize.UUID,
+//         references: {
+//           model: "images",
+//           key: "id",
+//         },
+//       },
+//       commentableType: {
+//         type: Sequelize.STRING,
+//       },
+//       createdAt: {
+//         allowNull: false,
+//         type: Sequelize.DATE,
+//       },
+//       updatedAt: {
+//         allowNull: false,
+//         type: Sequelize.DATE,
+//       },
+//     });
+//   },
+//   async down(queryInterface, Sequelize) {
+//     await queryInterface.dropTable("Comments");
+//   },
+// };
+
 "use strict";
-/** @type {import('sequelize-cli').Migration} */
 module.exports = {
-  async up(queryInterface, Sequelize) {
+  up: async (queryInterface, Sequelize) => {
     await queryInterface.createTable("Comments", {
       id: {
+        allowNull: false,
+        primaryKey: true,
         type: Sequelize.UUID,
         defaultValue: Sequelize.UUIDV4,
-        primaryKey: true,
-        unique: true,
       },
       title: {
         type: Sequelize.STRING,
       },
       commentableId: {
-        type: Sequelize.INTEGER,
+        allowNull: false,
+        type: Sequelize.UUID,
       },
       commentableType: {
+        allowNull: false,
         type: Sequelize.STRING,
       },
       createdAt: {
@@ -28,7 +69,7 @@ module.exports = {
       },
     });
   },
-  async down(queryInterface, Sequelize) {
+  down: async (queryInterface, Sequelize) => {
     await queryInterface.dropTable("Comments");
   },
 };

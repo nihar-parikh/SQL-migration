@@ -16,7 +16,6 @@ module.exports = {
       "images",
       [
         {
-          id: "987uicbwcbgbuib",
           title: "image1",
           url: "image_url1",
           createdAt: new Date(),

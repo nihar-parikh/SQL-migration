@@ -16,7 +16,6 @@ module.exports = {
       "users",
       [
         {
-          id: "kh2938r5oihio",
           firstName: "radha1",
           lastName: "krishna1",
           email: "radha1@gmail.com",
